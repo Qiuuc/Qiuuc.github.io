@@ -637,9 +637,39 @@ M347 1759 V0 H263 V1759 v0 v1759 h84z'/></svg></span></span></span><span class="
       </tags>
   </entry>
   <entry>
+    <title>Lecture04 MVP矩阵</title>
+    <url>/post/e2848ea7.html</url>
+    <content><![CDATA[<h1>MVP变换</h1>
+<p>position：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>e</mi><mo>⃗</mo></mover></mrow><annotation encoding="application/x-tex">\vec e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.714em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1799em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span></span></span></span><br>
+look-at/gaze direction：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>g</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span><br>
+up direction：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>t</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8785em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8785em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">t</span></span><span style="top:-3.1841em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span></span></span></span></span></span></span></p>
+<h2 id="View-Camera-变换">View/Camera 变换</h2>
+<h2 id="Projection-变换">Projection 变换</h2>
+]]></content>
+      <categories>
+        <category>Games101</category>
+      </categories>
+      <tags>
+        <tag>Games101</tag>
+        <tag>计算机图形学</tag>
+        <tag>技术美术</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>UpdateContent</title>
     <url>/post/78e323ad.html</url>
     <content><![CDATA[<h1>博客更新记录</h1>
+<h2 id="2023-03-19">2023.03.19</h2>
+<ul>
+<li>添加 本地搜索功能<br>
+食用指南：<a href="https://github.com/wzpan/hexo-generator-search">GithubLink</a> | <a href="https://blog.csdn.net/a3212/article/details/77163817">相关Blog</a></li>
+</ul>
 <h2 id="2023-03-18">2023.03.18</h2>
 <ul>
 <li>添加 Aplayer音乐播放器<br>
@@ -652,7 +682,7 @@ M347 1759 V0 H263 V1759 v0 v1759 h84z'/></svg></span></span></span><span class="
 </li>
 <li>
 <p>添加 Twikoo评论系统(麻烦的一批)<br>
-<a href="https://twikoo.js.org/">Twikoo</a>+<a href="https://cloud.mongodb.com/">MongoDB</a>+<a href="https://vercel.com/">Vercel</a><br>
+搭配方案：<a href="https://twikoo.js.org/">Twikoo</a>+<a href="https://cloud.mongodb.com/">MongoDB</a>+<a href="https://vercel.com/">Vercel</a><br>
 食用指南：<a href="https://www.bilibili.com/video/BV1Re4y1H7g8/?spm_id_from=333.788&amp;vd_source=b3c6334d9da09a4877e7d25e795ac768">视频教程BiliBili</a></p>
 </li>
 </ul>
@@ -677,31 +707,6 @@ M347 1759 V0 H263 V1759 v0 v1759 h84z'/></svg></span></span></span><span class="
       </categories>
       <tags>
         <tag>关于本站</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Lecture04 MVP矩阵</title>
-    <url>/post/e2848ea7.html</url>
-    <content><![CDATA[<h1>MVP变换</h1>
-<p>position：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>e</mi><mo>⃗</mo></mover></mrow><annotation encoding="application/x-tex">\vec e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.714em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">e</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1799em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
-3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
-10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
--1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
--7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
-H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
-c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span></span></span></span><br>
-look-at/gaze direction：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>g</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span><br>
-up direction：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>t</mi><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8785em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8785em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">t</span></span><span style="top:-3.1841em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span></span></span></span></span></span></span></p>
-<h2 id="View-Camera-变换">View/Camera 变换</h2>
-<h2 id="Projection-变换">Projection 变换</h2>
-]]></content>
-      <categories>
-        <category>Games101</category>
-      </categories>
-      <tags>
-        <tag>Games101</tag>
-        <tag>计算机图形学</tag>
-        <tag>技术美术</tag>
       </tags>
   </entry>
   <entry>
