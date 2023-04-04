@@ -20,199 +20,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Games101 Lecture05-06 光栅化</title>
-    <url>/post/79632d1d.html</url>
-    <content><![CDATA[<h1>光栅化（Razsterization）</h1>
-<h2 id="基本概念">基本概念</h2>
-<ul>
-<li>
-<p>光栅化即把图像呈现在屏幕上的过程。<br>
-裁剪空间是指经过透视投影变换后的三维空间，它的范围是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><msup><mo stretchy="false">]</mo><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">[-1,1]^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose"><span class="mclose">]</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span> ，也就是一个立方体。<br>
-屏幕空间是指最终显示在屏幕上的二维空间，它的范围是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mi>w</mi><mi>i</mi><mi>d</mi><mi>t</mi><mi>h</mi><mo stretchy="false">]</mo><mo>×</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mi>h</mi><mi>e</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,width] \times [0,height]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">h</span><span class="mord mathnormal">t</span><span class="mclose">]</span></span></span></span> ，也就是一个矩形。</p>
-</li>
-<li>
-<p>裁剪空间变换到屏幕空间，需经过以下几个步骤：</p>
-<ul>
-<li>将裁剪空间中的点坐标 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi><mo separator="true">,</mo><mi>w</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,y,z,w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span> 转换为归一化设备坐标 (NDC) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mi mathvariant="normal">/</mi><mi>w</mi><mo separator="true">,</mo><mi>y</mi><mi mathvariant="normal">/</mi><mi>w</mi><mo separator="true">,</mo><mi>z</mi><mi mathvariant="normal">/</mi><mi>w</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x/w,y/w,z/w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span>。这个过程叫做透视除法，它可以消除透视投影时产生的非线性缩放效果。</li>
-<li>将归一化设备坐标转换为窗口坐标 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>w</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mi>w</mi></msub><mo separator="true">,</mo><msub><mi>z</mi><mi>w</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_w,y_w,z_w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。这个过程叫做视口变换，它可以根据窗口的大小和位置来调整点坐标。</li>
-<li>将窗口坐标转换为屏幕坐标 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>s</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mi>s</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_s,y_s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 。这个过程叫做扫描转换，它可以根据像素的大小和排列来确定点在屏幕上的位置。</li>
-</ul>
-</li>
-<li>
-<p>计算机生成图像中，最基本的二维元素是三角形，三角形的特质：</p>
-<ul>
-<li>保证图形是平面</li>
-<li>内外定义清晰；</li>
-<li>具有成熟的顶点插值方法</li>
-</ul>
-</li>
-</ul>
-<h2 id="采样">采样</h2>
-<ul>
-<li>采样，就是把函数离散化的一个过程。</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//遍历图像中所有元素</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; imax; i++)</span><br><span class="line">    output[i] = <span class="built_in">f</span>(i);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>判断像素中心点和三角形的关系，定义一个二值函数：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>d</mi><mi>e</mi><mo stretchy="false">(</mo><mi>t</mi><mi>r</mi><mi>i</mi><mo separator="true">,</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">inside(tri,x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">in</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></li>
-</ul>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>i</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>d</mi><mi>e</mi><mo stretchy="false">(</mo><mi>t</mi><mi>r</mi><mi>i</mi><mo separator="true">,</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.36em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>1</mn><mo separator="true">,</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>p</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo><mi>i</mi><mi>n</mi><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>0</mn><mo separator="true">,</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>o</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>w</mi><mi>i</mi><mi>s</mi><mi>e</mi></mrow></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">inside(tri,x,y)=
-\begin{cases}
-   1, &amp; point(x,y) in \Delta t \\
-   0, &amp; otherwise
-\end{cases}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">in</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">1</span><span class="mpunct">,</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">0</span><span class="mpunct">,</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mord mathnormal">o</span><span class="mord mathnormal">in</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mord mathnormal">in</span><span class="mord">Δ</span><span class="mord mathnormal">t</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">i</span><span class="mord mathnormal">se</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; imax; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; jmax; j++)&#123;</span><br><span class="line">        image[i][j] = <span class="built_in">inside</span>(tri, i+<span class="number">0.5</span>, j+<span class="number">0.5</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>若有点位于三角形的边界上，可不做处理，也可特殊处理。</li>
-</ul>
-<h3 id="采样优化">采样优化</h3>
-<ul>
-<li>
-<p>Axis-Aligned Bounding Box：包围盒<br>
-在光栅化前先行判断像素点是否在三角形所在包围盒内，若不在，则直接忽略，不进光栅化的循环判断。</p>
-</li>
-<li>
-<p>Incremental Triangle Traversal：增量三角形遍历<br>
-看似更快，实则实现起来有一定难度，适用于细长的三角形</p>
-</li>
-</ul>
-<h2 id="走样，锯齿，采样伪影">走样，锯齿，采样伪影</h2>
-<ul>
-<li>
-<p>一些例子：</p>
-<ul>
-<li>锯齿（空间采样上的错误）</li>
-<li>摩尔纹（如，采样时跳过奇数行奇数列）</li>
-<li>车轮效应：人眼在时间上的采样跟不上运动速度</li>
-</ul>
-</li>
-<li>
-<p>走样本质：<br>
-采样率变低，采样间隔变大，波长变大，频率变小</p>
-</li>
-<li>
-<p>频谱图：</p>
-<ul>
-<li>Sparse sampling 稀疏采样，信号首尾相接时，意味着当前的采样频率是不发生走样的最低限值。</li>
-<li>Dense sampling 密集采样，意味着频率变小，间隔变小，就会产生混叠。</li>
-<li>所以，像素越低，采样率越低，采样频率越小，采样越稀疏，更容易走样。</li>
-</ul>
-</li>
-</ul>
-<h3 id="傅里叶变换">傅里叶变换</h3>
-<ul>
-<li>傅里叶级数展开：任何一个周期函数，都可以表示为一系列sin和cos函数的线性组合加一个常数项的形式。</li>
-<li>傅里叶变换：与傅里叶级数展开关系并不大，可以把图像从时域（空间域）变换到频域。</li>
-<li>从傅里叶看走样，同样一种采样方法，采样两种不同频率的函数，还原时无法得到正确的图像。也就是说同样的采样方法，却对应着多种函数。</li>
-</ul>
-<h3 id="滤波-Filtering">滤波 Filtering</h3>
-<ul>
-<li>在频域内去除某一特定频率的函数
-<ul>
-<li>
-<p>低通滤波器（lowpass）：减弱或阻隔高频信号，保留低频信号。使得色彩变化剧烈的区域变得平滑，也就是出现模糊效果。</p>
-</li>
-<li>
-<p>高通滤波器（highpass）：减弱或阻隔低频信号，保留高频信号。过滤了低频，只保留那些变化最快速最剧烈的区域，也就是图像里面的物体边缘，常用于边缘检测。</p>
-</li>
-<li>
-<p>相关文章：<a href="https://zhuanlan.zhihu.com/p/365546998?utm_source=qq&amp;utm_medium=social&amp;utm_oi=605668290971045888">滤波知乎专栏</a></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="卷积">卷积</h3>
-<ul>
-<li>
-<p>滤波=平均=卷积</p>
-</li>
-<li>
-<p>时域相乘等于频域相卷积</p>
-</li>
-<li>
-<p>卷积核越大，保留的高频信息越少，低频信息越多，对应到频域图上，高频区域的亮度就降低。</p>
-</li>
-</ul>
-<h2 id="反走样">反走样</h2>
-<ul>
-<li>
-<p>增加屏幕分辨率，增加采样频率（成本高）</p>
-</li>
-<li>
-<p>采样前，进行模糊（滤波）处理，图像的边界弱化，采样时，该区域对应的像素值可以起到过度缓冲的效果（低通滤波降低信号最高频率，使得可以用更低的采样频率完成采样）。<br>
-先采样后模糊是不可以的，因为波形重叠的情况下截断依然会有重叠。</p>
-</li>
-</ul>
-<h3 id="SSAA（Super-Sampling-Anti-Aliasing）">SSAA（Super-Sampling Anti-Aliasing）</h3>
-<ul>
-<li>超级采样抗锯齿（SSAA）
-<ul>
-<li>增加子采样点，针对每一个子采样点，重复母像素的流程，判定是否在三角形内、深度检测、着色，最后每个子采样点都会得到各自的颜色，母像素的颜色就是子采样点颜色的平均。</li>
-<li>随着子采样点数量增多，计算开销也会增大。</li>
-</ul>
-</li>
-</ul>
-<h3 id="MSAA（muti-sample-anti-aliasing）">MSAA（muti-sample anti-aliasing）</h3>
-<ul>
-<li>多重采样抗锯齿（MSAA）<br>
-MSAA是对SSAA的优化，具体是MSAA只对Z缓存（Z-Buffer） 和模板缓存（Stencil Buffer）中的数据进行超级采样抗锯齿的处理。<br>
-可以简单理解为只对多边形的边缘进行抗锯齿处理。这样的话，相比SSAA对画面中所有数据进行处理，MSAA对资源的消耗需求大幅减少，不过在画质上可能稍有不如SSAA。</li>
-</ul>
-<h3 id="FXAA（Fast-Approximate-Anti-Aliasing）">FXAA（Fast Approximate Anti-Aliasing）</h3>
-<ul>
-<li>快速近似抗锯齿（FXAA）<br>
-图像后期处理，得到图片，找到图像边界，再进行处理。<br>
-速度快，但容易出现误差。</li>
-</ul>
-<h3 id="TAA（Temporal-Anti-Aliasing）">TAA（Temporal Anti-Aliasing）</h3>
-<ul>
-<li>时域抗锯齿（TAA）<br>
-综合历史帧的数据来实现抗锯齿，这样会将每个像素点的多次采样均摊到多个帧中，相对的开销要小得多。</li>
-</ul>
-<h3 id="超分辨率（Super-resolution-super-sampling）">超分辨率（Super resolution/super sampling）</h3>
-<ul>
-<li>超分辨率（Super resolution/super sampling）<br>
-即通过硬件或软件的方法提高原有图像的分辨率，通过一系列低分辨率的图像来得到一幅高分辨率的图像过程就是超分辨率重建。</li>
-</ul>
-<h3 id="DLSS（Deep-Learning-Super-Sampling）">DLSS（Deep Learning Super Sampling）</h3>
-<ul>
-<li>深度学习超级采样（DLSS）<br>
-DLSS是基于AI深度学习的提升画质的技术，是一款由AI驱动的性能倍增器，可以让玩家在不花费额外成本的情况下运行更高分辨率和更高帧率的游戏，DLSS3开启了NVIDIARTX神经网络渲染游戏和应用的新时代。</li>
-</ul>
-<h2 id="深度缓冲">深度缓冲</h2>
-<ul>
-<li>
-<p>深度缓冲（Depth Buffer/Z-buffer）</p>
-</li>
-<li>
-<p>解决问题：<br>
-Painter’s Algorithm：画家算法，由远及近画画，近处画面覆盖远处画面。</p>
-</li>
-<li>
-<p>缺陷：无法处理物体互相重叠。</p>
-</li>
-<li>
-<p>Z-buffer：对每个像素多存储一个深度值。</p>
-</li>
-<li>
-<p>由于摄像机方向为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">-z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span>，所以 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span> 值越小表示越远。</p>
-</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//伪代码，为方便理解，下面z越远越大</span></span><br><span class="line"><span class="keyword">for</span>(each Triangle T)</span><br><span class="line">    <span class="keyword">for</span>(each <span class="built_in">sample</span>(x,y,z) in T)</span><br><span class="line">        <span class="keyword">if</span>(z&lt;zbuffer[x,y])</span><br><span class="line">            framebuffer[x,y]=rgb;</span><br><span class="line">            zbuffer[x,y]=z;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            ;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>算法复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Games101</category>
-      </categories>
-      <tags>
-        <tag>Games101</tag>
-        <tag>计算机图形学</tag>
-        <tag>技术美术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Games101 Lecture02 线性代数基础</title>
     <url>/post/c5c03add.html</url>
     <content><![CDATA[<h1>向量</h1>
@@ -1021,6 +828,199 @@ l0,-1344c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
       </tags>
   </entry>
   <entry>
+    <title>Games101 Lecture05-06 光栅化</title>
+    <url>/post/79632d1d.html</url>
+    <content><![CDATA[<h1>光栅化（Razsterization）</h1>
+<h2 id="基本概念">基本概念</h2>
+<ul>
+<li>
+<p>光栅化即把图像呈现在屏幕上的过程。<br>
+裁剪空间是指经过透视投影变换后的三维空间，它的范围是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><msup><mo stretchy="false">]</mo><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">[-1,1]^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose"><span class="mclose">]</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span> ，也就是一个立方体。<br>
+屏幕空间是指最终显示在屏幕上的二维空间，它的范围是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mi>w</mi><mi>i</mi><mi>d</mi><mi>t</mi><mi>h</mi><mo stretchy="false">]</mo><mo>×</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mi>h</mi><mi>e</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,width] \times [0,height]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">h</span><span class="mord mathnormal">t</span><span class="mclose">]</span></span></span></span> ，也就是一个矩形。</p>
+</li>
+<li>
+<p>裁剪空间变换到屏幕空间，需经过以下几个步骤：</p>
+<ul>
+<li>将裁剪空间中的点坐标 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi><mo separator="true">,</mo><mi>w</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,y,z,w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span> 转换为归一化设备坐标 (NDC) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mi mathvariant="normal">/</mi><mi>w</mi><mo separator="true">,</mo><mi>y</mi><mi mathvariant="normal">/</mi><mi>w</mi><mo separator="true">,</mo><mi>z</mi><mi mathvariant="normal">/</mi><mi>w</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x/w,y/w,z/w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span>。这个过程叫做透视除法，它可以消除透视投影时产生的非线性缩放效果。</li>
+<li>将归一化设备坐标转换为窗口坐标 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>w</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mi>w</mi></msub><mo separator="true">,</mo><msub><mi>z</mi><mi>w</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_w,y_w,z_w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。这个过程叫做视口变换，它可以根据窗口的大小和位置来调整点坐标。</li>
+<li>将窗口坐标转换为屏幕坐标 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>s</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mi>s</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_s,y_s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 。这个过程叫做扫描转换，它可以根据像素的大小和排列来确定点在屏幕上的位置。</li>
+</ul>
+</li>
+<li>
+<p>计算机生成图像中，最基本的二维元素是三角形，三角形的特质：</p>
+<ul>
+<li>保证图形是平面</li>
+<li>内外定义清晰；</li>
+<li>具有成熟的顶点插值方法</li>
+</ul>
+</li>
+</ul>
+<h2 id="采样">采样</h2>
+<ul>
+<li>采样，就是把函数离散化的一个过程。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//遍历图像中所有元素</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; imax; i++)</span><br><span class="line">    output[i] = <span class="built_in">f</span>(i);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断像素中心点和三角形的关系，定义一个二值函数：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>d</mi><mi>e</mi><mo stretchy="false">(</mo><mi>t</mi><mi>r</mi><mi>i</mi><mo separator="true">,</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">inside(tri,x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">in</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>i</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>d</mi><mi>e</mi><mo stretchy="false">(</mo><mi>t</mi><mi>r</mi><mi>i</mi><mo separator="true">,</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.36em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>1</mn><mo separator="true">,</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>p</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo><mi>i</mi><mi>n</mi><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>0</mn><mo separator="true">,</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi>o</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>w</mi><mi>i</mi><mi>s</mi><mi>e</mi></mrow></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">inside(tri,x,y)=
+\begin{cases}
+   1, &amp; point(x,y) in \Delta t \\
+   0, &amp; otherwise
+\end{cases}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">in</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">1</span><span class="mpunct">,</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord">0</span><span class="mpunct">,</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mord mathnormal">o</span><span class="mord mathnormal">in</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mord mathnormal">in</span><span class="mord">Δ</span><span class="mord mathnormal">t</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">i</span><span class="mord mathnormal">se</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; imax; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; jmax; j++)&#123;</span><br><span class="line">        image[i][j] = <span class="built_in">inside</span>(tri, i+<span class="number">0.5</span>, j+<span class="number">0.5</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>若有点位于三角形的边界上，可不做处理，也可特殊处理。</li>
+</ul>
+<h3 id="采样优化">采样优化</h3>
+<ul>
+<li>
+<p>Axis-Aligned Bounding Box：包围盒<br>
+在光栅化前先行判断像素点是否在三角形所在包围盒内，若不在，则直接忽略，不进光栅化的循环判断。</p>
+</li>
+<li>
+<p>Incremental Triangle Traversal：增量三角形遍历<br>
+看似更快，实则实现起来有一定难度，适用于细长的三角形</p>
+</li>
+</ul>
+<h2 id="走样，锯齿，采样伪影">走样，锯齿，采样伪影</h2>
+<ul>
+<li>
+<p>一些例子：</p>
+<ul>
+<li>锯齿（空间采样上的错误）</li>
+<li>摩尔纹（如，采样时跳过奇数行奇数列）</li>
+<li>车轮效应：人眼在时间上的采样跟不上运动速度</li>
+</ul>
+</li>
+<li>
+<p>走样本质：<br>
+采样率变低，采样间隔变大，波长变大，频率变小</p>
+</li>
+<li>
+<p>频谱图：</p>
+<ul>
+<li>Sparse sampling 稀疏采样，信号首尾相接时，意味着当前的采样频率是不发生走样的最低限值。</li>
+<li>Dense sampling 密集采样，意味着频率变小，间隔变小，就会产生混叠。</li>
+<li>所以，像素越低，采样率越低，采样频率越小，采样越稀疏，更容易走样。</li>
+</ul>
+</li>
+</ul>
+<h3 id="傅里叶变换">傅里叶变换</h3>
+<ul>
+<li>傅里叶级数展开：任何一个周期函数，都可以表示为一系列sin和cos函数的线性组合加一个常数项的形式。</li>
+<li>傅里叶变换：与傅里叶级数展开关系并不大，可以把图像从时域（空间域）变换到频域。</li>
+<li>从傅里叶看走样，同样一种采样方法，采样两种不同频率的函数，还原时无法得到正确的图像。也就是说同样的采样方法，却对应着多种函数。</li>
+</ul>
+<h3 id="滤波-Filtering">滤波 Filtering</h3>
+<ul>
+<li>在频域内去除某一特定频率的函数
+<ul>
+<li>
+<p>低通滤波器（lowpass）：减弱或阻隔高频信号，保留低频信号。使得色彩变化剧烈的区域变得平滑，也就是出现模糊效果。</p>
+</li>
+<li>
+<p>高通滤波器（highpass）：减弱或阻隔低频信号，保留高频信号。过滤了低频，只保留那些变化最快速最剧烈的区域，也就是图像里面的物体边缘，常用于边缘检测。</p>
+</li>
+<li>
+<p>相关文章：<a href="https://zhuanlan.zhihu.com/p/365546998?utm_source=qq&amp;utm_medium=social&amp;utm_oi=605668290971045888">滤波知乎专栏</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="卷积">卷积</h3>
+<ul>
+<li>
+<p>滤波=平均=卷积</p>
+</li>
+<li>
+<p>时域相乘等于频域相卷积</p>
+</li>
+<li>
+<p>卷积核越大，保留的高频信息越少，低频信息越多，对应到频域图上，高频区域的亮度就降低。</p>
+</li>
+</ul>
+<h2 id="反走样">反走样</h2>
+<ul>
+<li>
+<p>增加屏幕分辨率，增加采样频率（成本高）</p>
+</li>
+<li>
+<p>采样前，进行模糊（滤波）处理，图像的边界弱化，采样时，该区域对应的像素值可以起到过度缓冲的效果（低通滤波降低信号最高频率，使得可以用更低的采样频率完成采样）。<br>
+先采样后模糊是不可以的，因为波形重叠的情况下截断依然会有重叠。</p>
+</li>
+</ul>
+<h3 id="SSAA（Super-Sampling-Anti-Aliasing）">SSAA（Super-Sampling Anti-Aliasing）</h3>
+<ul>
+<li>超级采样抗锯齿（SSAA）
+<ul>
+<li>增加子采样点，针对每一个子采样点，重复母像素的流程，判定是否在三角形内、深度检测、着色，最后每个子采样点都会得到各自的颜色，母像素的颜色就是子采样点颜色的平均。</li>
+<li>随着子采样点数量增多，计算开销也会增大。</li>
+</ul>
+</li>
+</ul>
+<h3 id="MSAA（muti-sample-anti-aliasing）">MSAA（muti-sample anti-aliasing）</h3>
+<ul>
+<li>多重采样抗锯齿（MSAA）<br>
+MSAA是对SSAA的优化，具体是MSAA只对Z缓存（Z-Buffer） 和模板缓存（Stencil Buffer）中的数据进行超级采样抗锯齿的处理。<br>
+可以简单理解为只对多边形的边缘进行抗锯齿处理。这样的话，相比SSAA对画面中所有数据进行处理，MSAA对资源的消耗需求大幅减少，不过在画质上可能稍有不如SSAA。</li>
+</ul>
+<h3 id="FXAA（Fast-Approximate-Anti-Aliasing）">FXAA（Fast Approximate Anti-Aliasing）</h3>
+<ul>
+<li>快速近似抗锯齿（FXAA）<br>
+图像后期处理，得到图片，找到图像边界，再进行处理。<br>
+速度快，但容易出现误差。</li>
+</ul>
+<h3 id="TAA（Temporal-Anti-Aliasing）">TAA（Temporal Anti-Aliasing）</h3>
+<ul>
+<li>时域抗锯齿（TAA）<br>
+综合历史帧的数据来实现抗锯齿，这样会将每个像素点的多次采样均摊到多个帧中，相对的开销要小得多。</li>
+</ul>
+<h3 id="超分辨率（Super-resolution-super-sampling）">超分辨率（Super resolution/super sampling）</h3>
+<ul>
+<li>超分辨率（Super resolution/super sampling）<br>
+即通过硬件或软件的方法提高原有图像的分辨率，通过一系列低分辨率的图像来得到一幅高分辨率的图像过程就是超分辨率重建。</li>
+</ul>
+<h3 id="DLSS（Deep-Learning-Super-Sampling）">DLSS（Deep Learning Super Sampling）</h3>
+<ul>
+<li>深度学习超级采样（DLSS）<br>
+DLSS是基于AI深度学习的提升画质的技术，是一款由AI驱动的性能倍增器，可以让玩家在不花费额外成本的情况下运行更高分辨率和更高帧率的游戏，DLSS3开启了NVIDIARTX神经网络渲染游戏和应用的新时代。</li>
+</ul>
+<h2 id="深度缓冲">深度缓冲</h2>
+<ul>
+<li>
+<p>深度缓冲（Depth Buffer/Z-buffer）</p>
+</li>
+<li>
+<p>解决问题：<br>
+Painter’s Algorithm：画家算法，由远及近画画，近处画面覆盖远处画面。</p>
+</li>
+<li>
+<p>缺陷：无法处理物体互相重叠。</p>
+</li>
+<li>
+<p>Z-buffer：对每个像素多存储一个深度值。</p>
+</li>
+<li>
+<p>由于摄像机方向为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">-z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span>，所以 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span> 值越小表示越远。</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//伪代码，为方便理解，下面z越远越大</span></span><br><span class="line"><span class="keyword">for</span>(each Triangle T)</span><br><span class="line">    <span class="keyword">for</span>(each <span class="built_in">sample</span>(x,y,z) in T)</span><br><span class="line">        <span class="keyword">if</span>(z&lt;zbuffer[x,y])</span><br><span class="line">            framebuffer[x,y]=rgb;</span><br><span class="line">            zbuffer[x,y]=z;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            ;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>算法复杂度：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Games101</category>
+      </categories>
+      <tags>
+        <tag>Games101</tag>
+        <tag>计算机图形学</tag>
+        <tag>技术美术</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Games101 Lecture10-12 几何 (待上传)</title>
     <url>/post/96585576.html</url>
     <content><![CDATA[]]></content>
@@ -1130,19 +1130,6 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></spa
       </tags>
   </entry>
   <entry>
-    <title>Games101 Lecture18 渲染 (待上传)</title>
-    <url>/post/6f6afce.html</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Games101</category>
-      </categories>
-      <tags>
-        <tag>Games101</tag>
-        <tag>计算机图形学</tag>
-        <tag>技术美术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Games101 Lecture13-16 光线追踪 (待上传)</title>
     <url>/post/464769b0.html</url>
     <content><![CDATA[]]></content>
@@ -1158,6 +1145,19 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></spa
   <entry>
     <title>Games101 Lecture17 材质和表现 (待上传)</title>
     <url>/post/1f6c8f08.html</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Games101</category>
+      </categories>
+      <tags>
+        <tag>Games101</tag>
+        <tag>计算机图形学</tag>
+        <tag>技术美术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Games101 Lecture18 渲染 (待上传)</title>
+    <url>/post/6f6afce.html</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Games101</category>
@@ -1195,35 +1195,6 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></spa
       </tags>
   </entry>
   <entry>
-    <title>Games101 Lecture21-22 动画 (待上传)</title>
-    <url>/post/74510290.html</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Games101</category>
-      </categories>
-      <tags>
-        <tag>Games101</tag>
-        <tag>计算机图形学</tag>
-        <tag>技术美术</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数学基础 (完善中)</title>
-    <url>/post/f0ebe8d2.html</url>
-    <content><![CDATA[<h1>向量</h1>
-<h1>矩阵</h1>
-]]></content>
-      <categories>
-        <category>TA(技术美术)</category>
-      </categories>
-      <tags>
-        <tag>计算机图形学</tag>
-        <tag>技术美术</tag>
-        <tag>ShaderLab</tag>
-        <tag>Shader</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>图形学基础 (完善中)</title>
     <url>/post/462e3ced.html</url>
     <content><![CDATA[<h1>MVP矩阵</h1>
@@ -1242,9 +1213,9 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></spa
       </tags>
   </entry>
   <entry>
-    <title>ShaderLab语义 (完善中)</title>
-    <url>/post/3a9ce73a.html</url>
-    <content><![CDATA[<h1>常用语义</h1>
+    <title>渲染管线 (完善中)</title>
+    <url>/post/991cbb1.html</url>
+    <content><![CDATA[<h1>总流程</h1>
 ]]></content>
       <categories>
         <category>TA(技术美术)</category>
@@ -1278,9 +1249,25 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></spa
       </tags>
   </entry>
   <entry>
-    <title>渲染管线 (完善中)</title>
-    <url>/post/991cbb1.html</url>
-    <content><![CDATA[<h1>总流程</h1>
+    <title>数学基础 (完善中)</title>
+    <url>/post/f0ebe8d2.html</url>
+    <content><![CDATA[<h1>向量</h1>
+<h1>矩阵</h1>
+]]></content>
+      <categories>
+        <category>TA(技术美术)</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
+        <tag>技术美术</tag>
+        <tag>ShaderLab</tag>
+        <tag>Shader</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ShaderLab语义 (完善中)</title>
+    <url>/post/3a9ce73a.html</url>
+    <content><![CDATA[<h1>常用语义</h1>
 ]]></content>
       <categories>
         <category>TA(技术美术)</category>
@@ -1388,6 +1375,19 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></spa
       <tags>
         <tag>关于本站</tag>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Games101 Lecture21-22 动画 (待上传)</title>
+    <url>/post/74510290.html</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Games101</category>
+      </categories>
+      <tags>
+        <tag>Games101</tag>
+        <tag>计算机图形学</tag>
+        <tag>技术美术</tag>
       </tags>
   </entry>
   <entry>
