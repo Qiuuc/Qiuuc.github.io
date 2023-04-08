@@ -1,6 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数学基础 (完善中)</title>
+    <url>/post/f0ebe8d2.html</url>
+    <content><![CDATA[<h1>向量</h1>
+<h1>矩阵</h1>
+]]></content>
+      <categories>
+        <category>TA(技术美术)</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
+        <tag>技术美术</tag>
+        <tag>ShaderLab</tag>
+        <tag>Shader</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图形学基础 (完善中)</title>
+    <url>/post/462e3ced.html</url>
+    <content><![CDATA[<h1>MVP矩阵</h1>
+<h1>光栅化</h1>
+<h1>光照</h1>
+<h1>几何</h1>
+]]></content>
+      <categories>
+        <category>TA(技术美术)</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
+        <tag>技术美术</tag>
+        <tag>ShaderLab</tag>
+        <tag>Shader</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ShaderLab基础 (完善中)</title>
+    <url>/post/28180776.html</url>
+    <content><![CDATA[<h1>基本框架</h1>
+<h1>SubShader</h1>
+<h1>Properties</h1>
+<h1>Tags</h1>
+<h1>pass</h1>
+<h1>FallBack</h1>
+<h1>Custom。。。</h1>
+]]></content>
+      <categories>
+        <category>TA(技术美术)</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
+        <tag>技术美术</tag>
+        <tag>ShaderLab</tag>
+        <tag>Shader</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>渲染管线 (完善中)</title>
+    <url>/post/991cbb1.html</url>
+    <content><![CDATA[<h1>总流程</h1>
+]]></content>
+      <categories>
+        <category>TA(技术美术)</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
+        <tag>技术美术</tag>
+        <tag>ShaderLab</tag>
+        <tag>Shader</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ShaderLab语义 (完善中)</title>
+    <url>/post/3a9ce73a.html</url>
+    <content><![CDATA[<h1>常用语义</h1>
+]]></content>
+      <categories>
+        <category>TA(技术美术)</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
+        <tag>技术美术</tag>
+        <tag>ShaderLab</tag>
+        <tag>Shader</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>UnityCG内置函数 (完善中)</title>
+    <url>/post/6a997eb4.html</url>
+    <content><![CDATA[<h1>内置函数</h1>
+]]></content>
+      <categories>
+        <category>TA(技术美术)</category>
+      </categories>
+      <tags>
+        <tag>计算机图形学</tag>
+        <tag>技术美术</tag>
+        <tag>ShaderLab</tag>
+        <tag>Shader</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>UpdateContent</title>
+    <url>/post/78e323ad.html</url>
+    <content><![CDATA[<h1>博客更新记录</h1>
+<h2 id="2023-03-23">2023.03.23</h2>
+<ul>
+<li>开启 Mermaid绘制功能<br>
+食用指南：<a href="https://github.com/mermaid-js/mermaid">GithubLink</a></li>
+</ul>
+<h2 id="2023-03-19">2023.03.19</h2>
+<ul>
+<li>
+<p>添加 Chatra客服功能<br>
+食用指南：<a href="https://chatra.io/">官网</a></p>
+</li>
+<li>
+<p>添加 本地搜索功能<br>
+食用指南：<a href="https://github.com/wzpan/hexo-generator-search">GithubLink</a> | <a href="https://blog.csdn.net/a3212/article/details/77163817">相关Blog</a></p>
+</li>
+</ul>
+<h2 id="2023-03-18">2023.03.18</h2>
+<ul>
+<li>添加 Aplayer音乐播放器<br>
+食用指南：<a href="https://aplayer.js.org/#/zh-Hans/">GithubLink</a> | <a href="https://foreverone.gitee.io/post/hexo-Butterfly-aplayer.html">相关Blog</a></li>
+</ul>
+<h2 id="2023-03-17">2023.03.17</h2>
+<ul>
+<li>
+<p>添加 自定义css</p>
+</li>
+<li>
+<p>添加 Twikoo评论系统(麻烦的一批)<br>
+搭配方案：<a href="https://twikoo.js.org/">Twikoo</a>+<a href="https://cloud.mongodb.com/">MongoDB</a>+<a href="https://vercel.com/">Vercel</a><br>
+食用指南：<a href="https://www.bilibili.com/video/BV1Re4y1H7g8/?spm_id_from=333.788&amp;vd_source=b3c6334d9da09a4877e7d25e795ac768">视频教程BiliBili</a></p>
+</li>
+</ul>
+<h2 id="2023-03-16">2023.03.16</h2>
+<ul>
+<li>
+<p>添加 留言板：薇尔莉特信封<br>
+食用指南：<a href="https://akilar.top/posts/e2d3c450/">作者Blog</a></p>
+</li>
+<li>
+<p>添加 追番界面<br>
+食用指南：<a href="https://github.com/HCLonely/hexo-bilibili-bangumi">GithubLink</a></p>
+</li>
+<li>
+<p>添加 Butterfly主题<br>
+食用指南：<a href="https://butterfly.js.org/posts/4aa8abbe/">官方Blog</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>关于本站</category>
+      </categories>
+      <tags>
+        <tag>关于本站</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>故事的开始</title>
+    <url>/post/7a6a6b5a.html</url>
+    <content><![CDATA[<p><strong>本站建立于2023.03.16</strong></p>
+<p>测试代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">include <span class="string">&quot;iostream&quot;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Welcom</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;欢迎来到 &lt;芸芸&gt;&quot;</span>&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> main</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">Welcom</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>关于本站</category>
+      </categories>
+      <tags>
+        <tag>关于本站</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一些食用教程</title>
+    <url>/post/3603c0ce.html</url>
+    <content><![CDATA[<h2 id="播放-BiliBili-视频">播放 BiliBili 视频</h2>
+<p>视频-分享-复制嵌入代码-粘贴到md</p>
+<h2 id="hexo-bilibili-bangumi">hexo-bilibili-bangumi</h2>
+<p>更新追番数据：<code>hexo bangumi -u</code><br>
+更新追剧数据：<code>hexo cinema -u</code><br>
+删除数据：<code>hexo bangumi -d</code> &amp; <code>hexo cinema -d</code></p>
+<h2 id="图床">图床</h2>
+<p><a href="https://zhuanlan.zhihu.com/p/403554101?ivk_sa=1024320u">图床推荐</a><br>
+<a href="https://postimages.org/">Postimages</a><br>
+<a href="https://z4a.net/">z4a图床</a></p>
+<h2 id="图片压缩">图片压缩</h2>
+<p><a href="https://tinypng.com/">tinypng</a></p>
+<h2 id="文章模板">文章模板</h2>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: </span><br><span class="line">abbrlink: </span><br><span class="line">date: 2023-03-16 20:56:55</span><br><span class="line">cover: </span><br><span class="line">description: </span><br><span class="line">tags: </span><br><span class="line">- </span><br><span class="line">categories: </span><br><span class="line">- </span><br><span class="line">---</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>关于本站</category>
+      </categories>
+      <tags>
+        <tag>关于本站</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Games101 Lecture01 基本概念</title>
     <url>/post/5cc96b67.html</url>
     <content><![CDATA[<ul>
@@ -14,9 +212,9 @@
         <category>Games101</category>
       </categories>
       <tags>
-        <tag>Games101</tag>
         <tag>计算机图形学</tag>
         <tag>技术美术</tag>
+        <tag>Games101</tag>
       </tags>
   </entry>
   <entry>
@@ -451,9 +649,9 @@ c-10,0,-16.667,5,-20,15z M188 15 H145 v585 v2400 v585 h43z'/></svg></span></span
         <category>Games101</category>
       </categories>
       <tags>
-        <tag>Games101</tag>
         <tag>计算机图形学</tag>
         <tag>技术美术</tag>
+        <tag>Games101</tag>
       </tags>
   </entry>
   <entry>
@@ -685,9 +883,9 @@ M347 1759 V0 H263 V1759 v0 v1759 h84z'/></svg></span></span></span><span class="
         <category>Games101</category>
       </categories>
       <tags>
-        <tag>Games101</tag>
         <tag>计算机图形学</tag>
         <tag>技术美术</tag>
+        <tag>Games101</tag>
       </tags>
   </entry>
   <entry>
@@ -822,9 +1020,9 @@ l0,-1344c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
         <category>Games101</category>
       </categories>
       <tags>
-        <tag>Games101</tag>
         <tag>计算机图形学</tag>
         <tag>技术美术</tag>
+        <tag>Games101</tag>
       </tags>
   </entry>
   <entry>
@@ -1015,9 +1213,9 @@ Painter’s Algorithm：画家算法，由远及近画画，近处画面覆盖�
         <category>Games101</category>
       </categories>
       <tags>
-        <tag>Games101</tag>
         <tag>计算机图形学</tag>
         <tag>技术美术</tag>
+        <tag>Games101</tag>
       </tags>
   </entry>
   <entry>
@@ -1111,9 +1309,9 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></spa
         <category>Games101</category>
       </categories>
       <tags>
-        <tag>Games101</tag>
         <tag>计算机图形学</tag>
         <tag>技术美术</tag>
+        <tag>Games101</tag>
       </tags>
   </entry>
   <entry>
@@ -1124,9 +1322,9 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></spa
         <category>Games101</category>
       </categories>
       <tags>
-        <tag>Games101</tag>
         <tag>计算机图形学</tag>
         <tag>技术美术</tag>
+        <tag>Games101</tag>
       </tags>
   </entry>
   <entry>
@@ -1137,9 +1335,9 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></spa
         <category>Games101</category>
       </categories>
       <tags>
-        <tag>Games101</tag>
         <tag>计算机图形学</tag>
         <tag>技术美术</tag>
+        <tag>Games101</tag>
       </tags>
   </entry>
   <entry>
@@ -1150,9 +1348,9 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></spa
         <category>Games101</category>
       </categories>
       <tags>
-        <tag>Games101</tag>
         <tag>计算机图形学</tag>
         <tag>技术美术</tag>
+        <tag>Games101</tag>
       </tags>
   </entry>
   <entry>
@@ -1163,9 +1361,9 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></spa
         <category>Games101</category>
       </categories>
       <tags>
-        <tag>Games101</tag>
         <tag>计算机图形学</tag>
         <tag>技术美术</tag>
+        <tag>Games101</tag>
       </tags>
   </entry>
   <entry>
@@ -1176,9 +1374,9 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></spa
         <category>Games101</category>
       </categories>
       <tags>
-        <tag>Games101</tag>
         <tag>计算机图形学</tag>
         <tag>技术美术</tag>
+        <tag>Games101</tag>
       </tags>
   </entry>
   <entry>
@@ -1189,9 +1387,9 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></spa
         <category>Games101</category>
       </categories>
       <tags>
-        <tag>Games101</tag>
         <tag>计算机图形学</tag>
         <tag>技术美术</tag>
+        <tag>Games101</tag>
       </tags>
   </entry>
   <entry>
@@ -1202,207 +1400,9 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></spa
         <category>Games101</category>
       </categories>
       <tags>
+        <tag>计算机图形学</tag>
+        <tag>技术美术</tag>
         <tag>Games101</tag>
-        <tag>计算机图形学</tag>
-        <tag>技术美术</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>UpdateContent</title>
-    <url>/post/78e323ad.html</url>
-    <content><![CDATA[<h1>博客更新记录</h1>
-<h2 id="2023-03-23">2023.03.23</h2>
-<ul>
-<li>开启 Mermaid绘制功能<br>
-食用指南：<a href="https://github.com/mermaid-js/mermaid">GithubLink</a></li>
-</ul>
-<h2 id="2023-03-19">2023.03.19</h2>
-<ul>
-<li>
-<p>添加 Chatra客服功能<br>
-食用指南：<a href="https://chatra.io/">官网</a></p>
-</li>
-<li>
-<p>添加 本地搜索功能<br>
-食用指南：<a href="https://github.com/wzpan/hexo-generator-search">GithubLink</a> | <a href="https://blog.csdn.net/a3212/article/details/77163817">相关Blog</a></p>
-</li>
-</ul>
-<h2 id="2023-03-18">2023.03.18</h2>
-<ul>
-<li>添加 Aplayer音乐播放器<br>
-食用指南：<a href="https://aplayer.js.org/#/zh-Hans/">GithubLink</a> | <a href="https://foreverone.gitee.io/post/hexo-Butterfly-aplayer.html">相关Blog</a></li>
-</ul>
-<h2 id="2023-03-17">2023.03.17</h2>
-<ul>
-<li>
-<p>添加 自定义css</p>
-</li>
-<li>
-<p>添加 Twikoo评论系统(麻烦的一批)<br>
-搭配方案：<a href="https://twikoo.js.org/">Twikoo</a>+<a href="https://cloud.mongodb.com/">MongoDB</a>+<a href="https://vercel.com/">Vercel</a><br>
-食用指南：<a href="https://www.bilibili.com/video/BV1Re4y1H7g8/?spm_id_from=333.788&amp;vd_source=b3c6334d9da09a4877e7d25e795ac768">视频教程BiliBili</a></p>
-</li>
-</ul>
-<h2 id="2023-03-16">2023.03.16</h2>
-<ul>
-<li>
-<p>添加 留言板：薇尔莉特信封<br>
-食用指南：<a href="https://akilar.top/posts/e2d3c450/">作者Blog</a></p>
-</li>
-<li>
-<p>添加 追番界面<br>
-食用指南：<a href="https://github.com/HCLonely/hexo-bilibili-bangumi">GithubLink</a></p>
-</li>
-<li>
-<p>添加 Butterfly主题<br>
-食用指南：<a href="https://butterfly.js.org/posts/4aa8abbe/">官方Blog</a></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>关于本站</category>
-      </categories>
-      <tags>
-        <tag>关于本站</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一些食用教程</title>
-    <url>/post/3603c0ce.html</url>
-    <content><![CDATA[<h2 id="播放-BiliBili-视频">播放 BiliBili 视频</h2>
-<p>视频-分享-复制嵌入代码-粘贴到md</p>
-<h2 id="hexo-bilibili-bangumi">hexo-bilibili-bangumi</h2>
-<p>更新追番数据：<code>hexo bangumi -u</code><br>
-更新追剧数据：<code>hexo cinema -u</code><br>
-删除数据：<code>hexo bangumi -d</code> &amp; <code>hexo cinema -d</code></p>
-<h2 id="图床">图床</h2>
-<p><a href="https://zhuanlan.zhihu.com/p/403554101?ivk_sa=1024320u">图床推荐</a><br>
-<a href="https://postimages.org/">Postimages</a><br>
-<a href="https://z4a.net/">z4a图床</a></p>
-<h2 id="图片压缩">图片压缩</h2>
-<p><a href="https://tinypng.com/">tinypng</a></p>
-<h2 id="文章模板">文章模板</h2>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: </span><br><span class="line">abbrlink: </span><br><span class="line">date: 2023-03-16 20:56:55</span><br><span class="line">cover: </span><br><span class="line">description: </span><br><span class="line">tags: </span><br><span class="line">- </span><br><span class="line">categories: </span><br><span class="line">- </span><br><span class="line">---</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>关于本站</category>
-      </categories>
-      <tags>
-        <tag>关于本站</tag>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>故事的开始</title>
-    <url>/post/7a6a6b5a.html</url>
-    <content><![CDATA[<p><strong>本站建立于2023.03.16</strong></p>
-<p>测试代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">include <span class="string">&quot;iostream&quot;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Welcom</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;欢迎来到 &lt;芸芸&gt;&quot;</span>&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> main</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">Welcom</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>关于本站</category>
-      </categories>
-      <tags>
-        <tag>关于本站</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数学基础 (完善中)</title>
-    <url>/post/f0ebe8d2.html</url>
-    <content><![CDATA[<h1>向量</h1>
-<h1>矩阵</h1>
-]]></content>
-      <categories>
-        <category>TA(技术美术)</category>
-      </categories>
-      <tags>
-        <tag>计算机图形学</tag>
-        <tag>技术美术</tag>
-        <tag>ShaderLab</tag>
-        <tag>Shader</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图形学基础 (完善中)</title>
-    <url>/post/462e3ced.html</url>
-    <content><![CDATA[<h1>MVP矩阵</h1>
-<h1>光栅化</h1>
-<h1>光照</h1>
-<h1>几何</h1>
-]]></content>
-      <categories>
-        <category>TA(技术美术)</category>
-      </categories>
-      <tags>
-        <tag>计算机图形学</tag>
-        <tag>技术美术</tag>
-        <tag>ShaderLab</tag>
-        <tag>Shader</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>渲染管线 (完善中)</title>
-    <url>/post/991cbb1.html</url>
-    <content><![CDATA[<h1>总流程</h1>
-]]></content>
-      <categories>
-        <category>TA(技术美术)</category>
-      </categories>
-      <tags>
-        <tag>计算机图形学</tag>
-        <tag>技术美术</tag>
-        <tag>ShaderLab</tag>
-        <tag>Shader</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ShaderLab基础 (完善中)</title>
-    <url>/post/28180776.html</url>
-    <content><![CDATA[<h1>基本框架</h1>
-<h1>SubShader</h1>
-<h1>Properties</h1>
-<h1>Tags</h1>
-<h1>pass</h1>
-<h1>FallBack</h1>
-<h1>Custom。。。</h1>
-]]></content>
-      <categories>
-        <category>TA(技术美术)</category>
-      </categories>
-      <tags>
-        <tag>计算机图形学</tag>
-        <tag>技术美术</tag>
-        <tag>ShaderLab</tag>
-        <tag>Shader</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ShaderLab语义 (完善中)</title>
-    <url>/post/3a9ce73a.html</url>
-    <content><![CDATA[<h1>常用语义</h1>
-]]></content>
-      <categories>
-        <category>TA(技术美术)</category>
-      </categories>
-      <tags>
-        <tag>计算机图形学</tag>
-        <tag>技术美术</tag>
-        <tag>ShaderLab</tag>
-        <tag>Shader</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>UnityCG内置函数 (完善中)</title>
-    <url>/post/6a997eb4.html</url>
-    <content><![CDATA[<h1>内置函数</h1>
-]]></content>
-      <categories>
-        <category>TA(技术美术)</category>
-      </categories>
-      <tags>
-        <tag>计算机图形学</tag>
-        <tag>技术美术</tag>
-        <tag>ShaderLab</tag>
-        <tag>Shader</tag>
       </tags>
   </entry>
 </search>
